@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613131718) do
+ActiveRecord::Schema.define(version: 20150613164331) do
+
+  create_table "checkouts", force: :cascade do |t|
+    t.integer  "phonenumb"
+    t.integer  "order_item_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "checkouts", ["order_item_id"], name: "index_checkouts_on_order_item_id"
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -19,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150613131718) do
     t.decimal  "unit_price", precision: 12, scale: 3
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "quantity"
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
@@ -32,10 +42,11 @@ ActiveRecord::Schema.define(version: 20150613131718) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "subtotal",        precision: 12, scale: 3
-    t.decimal  "total",           precision: 12, scale: 3
     t.integer  "order_status_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.decimal  "total_price"
+    t.string   "phonenumb"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
@@ -59,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150613131718) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.boolean  "active"
+    t.float    "price"
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id"
@@ -88,8 +100,6 @@ ActiveRecord::Schema.define(version: 20150613131718) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
