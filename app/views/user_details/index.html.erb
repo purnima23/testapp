@@ -1,3 +1,13 @@
+<!-- Search query for nearest users-->
+
+<%= form_tag user_details_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+  </p>
+<% end %>
+
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing User Details</h1>
@@ -5,10 +15,11 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Name (Shop) </th>
       <th>Address</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>User's Name</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
     </tr>
   </thead>
 
@@ -17,7 +28,9 @@
       <tr>
         <td><%= user_detail.name %></td>
         <td><%= user_detail.address %></td>
-        <td><%= user_detail.user %></td>
+        <%  if user_detail.user  %>
+        <td><%= user_detail.user.email %></td>
+        <% end %>
         <td><%= user_detail.longitude %></td>
         <td><%= user_detail.latitude %></td>    
         <td><%= link_to 'Show', user_detail %></td>
@@ -28,14 +41,9 @@
   </tbody>
 </table>
 
-<!-- Search query for nearest users-->
-<%= form_tag user_details_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Near", :name => nil %>
-  </p>
-<% end %>
-
 <br>
 
+  <div style='width: 800px;'>
+    <div id="geolocation" style='width: 800px; height: 400px;'></div>
+  </div>
 <%= link_to 'New User detail', new_user_detail_path %>

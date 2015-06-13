@@ -4,18 +4,20 @@ class UserDetailsController < ApplicationController
   # GET /user_details
   # GET /user_details.json
   def index
-    @user_details = UserDetail.all
-
     if params[:search].present?
-    @user_location = UserDetail.near(params[:search], 50, :order => :distance)
+    @user_details = UserDetail.near(params[:search], 5)
     else
-    @user_location = UserDetail.all
+    @user_details = UserDetail.all
     end
+
+    user_location = request.location
+    locations = UserDetail.near([user_location.data['latitude'], user_location.data['longitude']])
   end
 
   # GET /user_details/1
   # GET /user_details/1.json
   def show
+     @user_detail = UserDetail.find(params[:id])
   end
 
   # GET /user_details/new

@@ -7,6 +7,8 @@ gem 'rails', '4.2.1'
 gem 'pg'
 
 gem 'geocoder'
+gem 'gmaps4rails'
+gem 'gon'
 
 gem 'activemerchant', '~> 1.46.0'
 # Use SCSS for stylesheets

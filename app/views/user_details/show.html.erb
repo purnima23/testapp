@@ -12,15 +12,25 @@
 
 <p>
   <strong>User:</strong>
-  <%= @user_detail.user %>
+  <%= @user_detail.user.email %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @user_detail.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @user_detail.longitude %>
 </p>
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user_detail.latitude}%2C#{@user_detail.longitude}" %>
 
 <h3>Nearby locations</h3>
 <ul>
-<% if !@user_detail.nearbys(10).nil? %>
-  <% for user_detail in @user_detail.nearbys(10) %>
+<% if !@user_detail.nearbys(30).nil? %>
+  <% for user_detail in @user_detail.nearbys(30) %>
     <li><%= link_to user_detail.address, user_detail %> (<%= user_detail.distance.round(2) %> miles)</li>
   <% end %>
 <% end %>
@@ -28,3 +38,4 @@
 
 <%= link_to 'Edit', edit_user_detail_path(@user_detail) %> |
 <%= link_to 'Back', user_details_path %>
+
