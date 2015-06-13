@@ -10,9 +10,8 @@ unless User.exists?
 end
 
 
-unless 	@user = User.find_by(1)
+unless @user = User.find_by(1)
 	@product = @user.product.create(name:"cucumber", days_before_expired: 3, quantity: 3 )
-
 end
 
 OrderStatus.delete_all
