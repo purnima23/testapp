@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20150613131921) do
 
   add_index "checkouts", ["order_item_id"], name: "index_checkouts_on_order_item_id"
 
+ActiveRecord::Schema.define(version: 20150613131718) do
+
+
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "order_id"
@@ -50,6 +53,17 @@ ActiveRecord::Schema.define(version: 20150613131921) do
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
+  create_table "payments", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "last4"
+    t.decimal  "amount"
+    t.boolean  "success"
+    t.string   "authorization_code"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "days_before_expired"
@@ -66,10 +80,11 @@ ActiveRecord::Schema.define(version: 20150613131921) do
   create_table "user_details", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "gpscoordinate"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "user_details", ["user_id"], name: "index_user_details_on_user_id"
@@ -87,6 +102,8 @@ ActiveRecord::Schema.define(version: 20150613131921) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

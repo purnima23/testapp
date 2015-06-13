@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'payments/index'
+
+  get 'payments/new'
+
+  get 'payments/create'
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -16,6 +22,9 @@ Rails.application.routes.draw do
     resources :products
 
     resources :checkout
+
+  resources :payments, only: [:index, :new, :create]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
