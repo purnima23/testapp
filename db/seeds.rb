@@ -8,3 +8,14 @@
 unless User.exists?
     User.create(email: "user@user.com", password: "password")
 end
+
+
+unless 	@user = User.find_by(1)
+	@product = @user.product.create(name:"cucumber", days_before_expired: 3, quantity: 3 )
+
+end
+
+OrderStatus.delete_all
+	OrderStatus.create(id: 1, name: "In Progress")
+	OrderStatus.create(id: 2, name: "Placed")
+	OrderStatus.create(id: 4, name: "Cancelled")

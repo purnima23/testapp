@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @order_item = current_order.order_items.new
   end
 
   # GET /products/1
@@ -25,8 +26,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @user = User.find
-    @product = Product.new(product_params)
+   
+    @product = current_user.product.(product_params)
 
     respond_to do |format|
       if @product.save
