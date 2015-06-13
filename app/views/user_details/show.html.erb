@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user_detail.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user_detail.address %>
+</p>
+
+<p>
+  <strong>Gpscoordinate:</strong>
+  <%= @user_detail.gpscoordinate %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_detail.user %>
+</p>
+
+<%= link_to 'Edit', edit_user_detail_path(@user_detail) %> |
+<%= link_to 'Back', user_details_path %>
