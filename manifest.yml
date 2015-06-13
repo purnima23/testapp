@@ -1,0 +1,14 @@
+applications:
+- services:
+  - Reverse Geocoding-kg
+  - Travel Boundary Service-0b
+  - Geocoding-k7
+  - ElephantSQL-dv
+  disk_quota: 1024M
+  host: foodr
+  name: foodr
+  command: bundle exec rake db:migrate
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 256M
