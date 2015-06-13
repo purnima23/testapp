@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613131921) do
+ActiveRecord::Schema.define(version: 20150613164331) do
 
   create_table "checkouts", force: :cascade do |t|
     t.integer  "phonenumb"
@@ -21,9 +21,6 @@ ActiveRecord::Schema.define(version: 20150613131921) do
   end
 
   add_index "checkouts", ["order_item_id"], name: "index_checkouts_on_order_item_id"
-
-ActiveRecord::Schema.define(version: 20150613131718) do
-
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -49,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150613131718) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.decimal  "total_price"
+    t.string   "phonenumb"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
@@ -102,8 +100,6 @@ ActiveRecord::Schema.define(version: 20150613131718) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

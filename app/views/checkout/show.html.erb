@@ -1,0 +1,10 @@
+<div class="checkout">
+<center>
+<h3> Kind Soul You Are! <h3>
+<h4> TOTAL AMOUNT : <h4>
+<h4> For <%= "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )" %>
+<h3> Login to proceed with Payment </h3>
+  <%= render "_phonenumb" %>
+</center>
+</div>
+

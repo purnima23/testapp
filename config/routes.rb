@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   devise_for :users 
     resources :products
 
-    resources :checkout
+  resources :checkouts, only: [:show, :new, :create]
 
   resources :payments, only: [:index, :new, :create]
 
