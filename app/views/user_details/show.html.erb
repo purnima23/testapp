@@ -11,14 +11,20 @@
 </p>
 
 <p>
-  <strong>Gpscoordinate:</strong>
-  <%= @user_detail.gpscoordinate %>
-</p>
-
-<p>
   <strong>User:</strong>
   <%= @user_detail.user %>
 </p>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user_detail.latitude}%2C#{@user_detail.longitude}" %>
+
+<h3>Nearby locations</h3>
+<ul>
+<% if !@user_detail.nearbys(10).nil? %>
+  <% for user_detail in @user_detail.nearbys(10) %>
+    <li><%= link_to user_detail.address, user_detail %> (<%= user_detail.distance.round(2) %> miles)</li>
+  <% end %>
+<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_user_detail_path(@user_detail) %> |
 <%= link_to 'Back', user_details_path %>
