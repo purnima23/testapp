@@ -21,7 +21,7 @@
       <tr>
         <td><%= payment.first_name %></td>
         <td><%= payment.last_name %></td>
-        <td><%= payment.last4 %></td>
+        <td><%= payment.card_security_code %></td>
         <td><%= number_to_currency payment.amount %></td>
         <td><%= payment.success == true ? "Yes" : "No" %></td>
         <td><%= payment.authorization_code %></td>

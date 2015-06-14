@@ -1,14 +1,13 @@
 applications:
-- services:
-  - Reverse Geocoding-kg
-  - Travel Boundary Service-0b
-  - Geocoding-k7
-  - ElephantSQL-dv
-  disk_quota: 1024M
-  host: foodr
-  name: foodr
-  command: bundle exec rake db:migrate
-  path: .
-  domain: mybluemix.net
+#swap out myapp-jbs for your own app name
+- name: foodr
+  memory: 1GB
   instances: 1
-  memory: 256M
+  path: .
+  command: bundle exec rake db:setup && bundle exec rails s -p $PORT
+  services:
+  #swap out the below for your own
+  #cf cs elephantsql turtle yourownname
+  #cf cs rediscloud 25mb yourownname
+  #redis cloud has different plans, check out cf marketplace for the plans
+    - postgres-myapp
