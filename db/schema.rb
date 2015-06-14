@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613164331) do
-
-  create_table "checkouts", force: :cascade do |t|
-    t.integer  "phonenumb"
-    t.integer  "order_item_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "checkouts", ["order_item_id"], name: "index_checkouts_on_order_item_id"
+ActiveRecord::Schema.define(version: 20150613225631) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -54,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150613164331) do
   create_table "payments", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "last4"
+    t.string   "card_security_code"
     t.decimal  "amount"
     t.boolean  "success"
     t.string   "authorization_code"

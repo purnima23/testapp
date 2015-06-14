@@ -3,7 +3,7 @@ class CreatePayments < ActiveRecord::Migration
     create_table :payments do |t|
       t.string :first_name
       t.string :last_name
-      t.string :last4
+      t.string :card_security_code
       t.decimal :amount
       t.decimal :amount
       t.boolean :success
