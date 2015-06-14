@@ -18,8 +18,10 @@ class SendTextController < ApplicationController
 		#most frequent product purchased per user 
 			@y = x.order_items
 			@products = y.products
-			@frequent = @products.select{|element| y.count(element) > 3 }
+			@frequent = @products.select{|element| y.count(element) > 4 }
 			@fav_product = @frequent.uniq
+			@not_so_frequent = @products.select{|element| y.count(element) >2}
+			@nofrequent = @nofrequent.uniq
 			
 		end
 
@@ -37,14 +39,6 @@ class SendTextController < ApplicationController
     @twilio_client.account.ssmessages.create(
       :from => "+1#{twilio_phone_number}",
       :to => @numbers_to_send_to,
-      :body => "Hi there, your favourite #{@fav_product} is available to be purchased at Teszo")
+      :body => "Hey there, Replenish your fridge with your favourite brand of #{@fav_product} .Other awesome #{@notfrequent} for your tummy  . Hurry up to Tezsco now!")
   end
 end
-
-
-array = [1, 2, 1, 3, 5, 4, 5, 5]
-=> [1, 2, 1, 3, 5, 4, 5, 5]
-dup = array.select{|element| array.count(element) > 1 }
-=> [1, 1, 5, 5, 5]
-dup.uniq
-=> [1, 5]

@@ -40,6 +40,7 @@ gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'quiet_assets', group: :development
 
+gem 'twilio-ruby', '~> 4.2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
