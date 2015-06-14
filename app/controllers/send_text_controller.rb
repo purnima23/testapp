@@ -23,8 +23,7 @@ class SendTextController < ApplicationController
 			
 		end
 
-	 
-
+	
 	
     number_to_send_to = @numbers_to_send_to
  
@@ -41,10 +40,3 @@ class SendTextController < ApplicationController
   end
 end
 
-
-array = [1, 2, 1, 3, 5, 4, 5, 5]
-=> [1, 2, 1, 3, 5, 4, 5, 5]
-dup = array.select{|element| array.count(element) > 1 }
-=> [1, 1, 5, 5, 5]
-dup.uniq
-=> [1, 5]

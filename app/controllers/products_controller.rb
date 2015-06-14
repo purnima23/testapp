@@ -6,10 +6,12 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params[:search].present?
-    @user_details = UserDetail.near(params[:search], 3)
+    @user_details = UserDetail.near(params[:search], 10)
     else
     @user_details = UserDetail.all
     end
+
+    @user_location = request.location
 
     @products = []
     @user_details.each do |user_detail|

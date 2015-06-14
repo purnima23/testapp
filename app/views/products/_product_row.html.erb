@@ -1,9 +1,13 @@
-<div class="well">
+<!-- <div class="well">
 
   <div class="row"> 
     <div class="col-xs-8">
       <h4><%= product.name %></small></h4>
+
         <h6 class="text-left">Days Before Expiry: <span style="color: green"><%= product.days_before_expired %></span><br><%= product.user.user_detail.address %></h6>
+
+        
+
 
     </div>
     <div class="col-xs-4">
@@ -20,4 +24,21 @@
     </div>
     
   </div>
+</div> -->
+<% @n = rand(0..11) %> 
+<div class="panel panel-default" data-sr='wait 0.8s, reset'>
+    <div class="panel-body">
+        <div class="clearfix">
+            <img src="images/<%= @n %>.jpg" class="img-responsive img-circle pull-left" width="48">
+            <h4 class="item-title"><%= product.name %></h4>
+            <p class="item-content">From <span>RM<%= product.price %></span> <span>(<%=product.user.user_detail.distance_to([3.0710352,101.6132116]).to_d.round(2) %> miles away)</span></p>
+            <a href="#">
+                <div class="checkbox pull-right">
+                    <label>
+                        <input class="box" type="checkbox" value="<%= product.price %>" autocomplete="off">
+                    </label>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>

@@ -40,7 +40,3 @@
 	OrderStatus.create!(id: 1, name: "In Progress")
 	OrderStatus.create!(id: 2, name: "Placed")
 	OrderStatus.create!(id: 3, name: "Cancelled")
-
-	# Product.create! name: "Banana", price: 0.49, active: true
-	# Product.create!true name: "Apple", price: 0.29, active: true
-	# Product.create! name: "Carton of Strawberries", price: 1.99, active: 
