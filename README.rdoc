@@ -2,8 +2,22 @@
 
 Turning excessive products into profit
 
-===Description
+=== Description
 
 Excess aims to improve waste management by reducing unsold stock into profitable goods by connecting customers with their closest merchants based on geocoded location. It analyses the user's purchasing behaviour through the use of Big Data and notify them via SMS about their most favoured item to be purchased later.
 
 The front end is built on AngularJS whilst the backend is built on Ruby on Rails.
+
+=== Screen Shots
+
+==== Main Screen
+
+
+==== Item Selection
+
+
+==== Cart Selection
+
+
+==== Reservation / Payment Menu
+
