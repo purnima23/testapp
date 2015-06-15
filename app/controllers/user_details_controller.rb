@@ -4,12 +4,20 @@ class UserDetailsController < ApplicationController
   # GET /user_details
   # GET /user_details.json
   def index
+    if params[:search].present?
+    @user_details = UserDetail.near(params[:search], 5)
+    else
     @user_details = UserDetail.all
+    end
+
+    user_location = request.location
+    locations = UserDetail.near([user_location.data['latitude'], user_location.data['longitude']])
   end
 
   # GET /user_details/1
   # GET /user_details/1.json
   def show
+     @user_detail = UserDetail.find(params[:id])
   end
 
   # GET /user_details/new
@@ -69,6 +77,6 @@ class UserDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_detail_params
-      params.require(:user_detail).permit(:name, :address, :gpscoordinate, :user_id)
+      params.require(:user_detail).permit(:name, :address, :longitude, :latitude, :user_id)
     end
 end

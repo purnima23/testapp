@@ -5,12 +5,6 @@ Rails.application.routes.draw do
 
   get 'payments/create'
 
-  get 'payments/index'
-
-  get 'payments/new'
-
-  get 'payments/create'
-
   get 'order_items/create'
 
   get 'order_items/update'
@@ -27,7 +21,10 @@ Rails.application.routes.draw do
   devise_for :users 
     resources :products
 
+  resources :checkouts, only: [:show, :new, :create]
+
   resources :payments, only: [:index, :new, :create]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

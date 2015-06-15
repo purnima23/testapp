@@ -5,7 +5,21 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params[:search].present?
+    @user_details = UserDetail.near(params[:search], 10)
+    else
+    @user_details = UserDetail.all
+    end
+
+    @user_location = request.location
+
+    @products = []
+    @user_details.each do |user_detail|
+      user_detail.user.products.each do |product|
+        @products << product
+      end
+    end
+    @products.flatten
     @order_item = current_order.order_items.new
   end
 
